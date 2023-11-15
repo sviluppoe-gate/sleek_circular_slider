@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:example/utils.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+
+import '../utils.dart';
 
 class Clock extends StatefulWidget {
   Clock({Key? key}) : super(key: key);

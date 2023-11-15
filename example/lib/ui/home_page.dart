@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../utils.dart';
 import 'clock_page.dart';
 import 'random_value_page.dart';
-import 'package:example/utils.dart';
 import 'dart:math' as math;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'example_page.dart';
@@ -13,6 +13,7 @@ final viewModel01 = ExampleViewModel(
     min: 0,
     max: 100,
     value: 60,
+    touchOnTrack:false,
     pageColors: [Colors.white, HexColor('#E1C3FF')]);
 final example01 = ExamplePage(
   viewModel: viewModel01,

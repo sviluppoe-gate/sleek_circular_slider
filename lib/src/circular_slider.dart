@@ -19,6 +19,7 @@ class SleekCircularSlider extends StatefulWidget {
   final double initialValue;
   final double min;
   final double max;
+  final bool touchOnTrack;
   final CircularSliderAppearance appearance;
   final OnChange? onChange;
   final OnChange? onChangeStart;
@@ -35,6 +36,7 @@ class SleekCircularSlider extends StatefulWidget {
       this.initialValue = 50,
       this.min = 0,
       this.max = 100,
+      this.touchOnTrack = true,
       this.appearance = defaultAppearance,
       this.onChange,
       this.onChangeStart,
@@ -296,6 +298,16 @@ class _SleekCircularSliderState extends State<SleekCircularSlider>
     final double touchWidth = widget.appearance.progressBarWidth >= 25.0
         ? widget.appearance.progressBarWidth
         : 25.0;
+
+    if (!widget.touchOnTrack) {
+      Offset handlerOffset = degreesToCoordinates(_painter!.center!,
+          -math.pi / 2 + _startAngle + _currentAngle! + 1.5, _painter!.radius);
+      if (!Rect.fromCenter(
+              center: position, width: touchWidth, height: touchWidth)
+          .contains(handlerOffset)) {
+        return false;
+      }
+    }
 
     if (isPointAlongCircle(
         position, _painter!.center!, _painter!.radius, touchWidth)) {
